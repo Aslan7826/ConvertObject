@@ -1,0 +1,15 @@
+void Main()
+{
+	var filedValue = "false";
+	var types = new List<Type>(){typeof(int),typeof(bool),typeof(double)};
+	foreach(var type in types)
+	{
+		//Convert.ChangeType(filedValue,typeInt);
+	    var converter = System.ComponentModel.TypeDescriptor.GetConverter(type);
+		if(converter != null && converter.IsValid(filedValue)) 
+		{
+	        var value = converter.ConvertFromString(filedValue);
+			value.Dump();
+		}
+	}
+}
